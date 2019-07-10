@@ -1,0 +1,4 @@
+[BUS LINE]
+01 : Ben xe Gia Lam - Ngo Gia Kham - Ngo Quyen - Thuy Loi .
+02 : Ben xe Gia Lam - Bac Co - Hanu - Ngo Quyen - Thuy Loi .
+03 : Ben xe Gia Lam - Bac Co - Hanu - Tay Son - Thuy Loi ?

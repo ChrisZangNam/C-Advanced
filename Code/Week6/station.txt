@@ -1,0 +1,12 @@
+[STATIONS]
+S1=Ha Noi
+S2=Gia Lam
+S3=Dong Dang
+S4=Hai Phong
+S5=Da Lat
+S6=Sai Gon
+[LINES]
+M1=S1 S3 S4 S5
+M2=S1 S3 S5 S6
+M3=S1 S2 S4
+M4=S1 S5 S6

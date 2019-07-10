@@ -1,0 +1,41 @@
+1. const char *soundex(const char *s)
+
+2. void add_code(const char *s, int c)
+
+3. void init()
+
+4. void cleanAllScreen(GtkTexBuffer *textbuffer, Widgets *app)
+
+5. void hideWidget(GtkWidget *button)
+
+6. void showWidget(GtkWidget *button)
+
+7. void showMessage(char *str)
+
+8. int check_prefix(char *str1, char *str2)
+
+9. void findBySoundex(char *word, char *arr)
+
+10. void xulyxau(char *input, char *output)
+
+11. void addToListSuggest(JRB nextword, int number)
+
+12. gboolean checkSoundex(Widgets *wg, GdkEvent *event, gpointer user_data)
+
+13. void suggest(char *word, GdkEventKey keyEvent)
+
+14. gboolean updating_suggest(GtkWidget *entry, GdkEvent *event, gpointer user_data)
+
+15. void refreshData()
+
+16. void refreshBtn_click(GtkWidget *button, Widgets *app)
+
+17. void editBtn_click(GtkWidget *button, Widget *app)
+
+18. void addBtn_click(GtkWidget *button, Widgets *app)
+
+19. void delBtn_click(GtkWidget *button, Widgets* app)
+
+20. void enterToSearch(GtkButton *button, Widgets *app)
+
+21. int main(int argc, char *argv[])

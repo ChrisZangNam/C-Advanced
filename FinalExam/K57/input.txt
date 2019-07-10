@@ -1,0 +1,11 @@
+HAN="Ha Noi"
+SGN="Sai Gon"
+HPG="Hai Phong"
+DAN="Da Nang"
+CMU="Ca Mau"
+HAN SGN 10.4
+HAN CMU 12.6
+HAN HPG 3.4
+HPG DAN 6.7
+HPG SGN 8.9
+SGN CMU 2.3

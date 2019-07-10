@@ -1,0 +1,120 @@
+I. Cac ham giao dien
+
+1. void cleanAllScreen(GtkTextBuffer *textbuffer, Widgets *app)
+    . Tac dung: xoa trang phan Tim kiem va phan Hien thi noi dung
+    . dong 1: set text cho thanh phan 'searchentry' la rong
+    . dong 2: set text cho thanh phan 'textbuffer' la rong
+
+2. void hideWidget(GtkWidget *button)
+    . Tac dung: an di nut 'button' la tham so dau vao
+    . dung ham 'gtk_widget_hide' la xong
+
+3. void showWidget(GtkWidget *button)
+    . Tac dung: hien thi 'button' la tham so dau vao
+    . dung ham 'gtk_widget_show' la xong
+
+4. void showMessage(char *str)
+    . Tac dung: hien thi thong bao tren thanh phan 'label'
+    . dung ham 'gtk_label_set_text' la xong
+
+II. Phan nut bam
+
+1. void refreshData()
+    . Tac dung: xoa noi dung hien tai cua file .dat va copy noi dung file .old vao file .dat
+    . dong 1: xoa file .dat
+    . phan con lai: copy noi dung file .old vao file .dat => hoan thanh cap nhat
+
+2. void refreshBtn_click(GtkWidget *button, Widgets *app)
+    . Tac dung: ham ket noi voi nut Refresh trong giao dien va thuc hien Refresh du lieu
+    . dong 1: cap nhat file .dat
+    . dong 2: *textbuffer la con tro tro toi thanh phan 'textview' cua app
+            -> su dung 'textbuffer' de thao tac voi phan textview
+    . dong 3: xoa phan Tim kiem va phan Hien thi noi dung
+    . dong 4 -> 7: an di cac nut Add, Edit, Delete
+    . dong 8: hien thi thong bao ra man hinh da Refresh thanh cong
+
+3. void editBtn_click(GtkWidget *button, Widgets* app)
+    . Tac dung: ham ket noi voi nut Edit trong giao dien va thuc hien Edit du lieu
+    . dong 1: khai bao 'value' chi de lam tham so cho ham 'bfndky' ben duoi dung
+    . dong 2: khai bao 2 bien chay trong Gtk la 'start' va 'end'
+    . dong 3: khai bao 2 xau trong Gtk la 'find_txt' va 'btext'
+    . dong 4: khai bao 'textbuffer' dung de thao tac voi thanh phan 'textview'
+    . dong 5: doc file tu dien .dat vao cay btree 'tree'
+    . dong 6: tro 'textbuffer' toi thanh phan 'textview' cua app
+    . dong 7: xau 'find_txt' luu phan text duoc nguoi dung nhap vao o thanh phan 'searchentry' - noi dung nguoi dung can tim kiem
+    . dong 8: dung ham 'gtk_text_buffer_get_bounds' de duyet 'textbuffer'
+              khi do 'start' va 'end' se tro toi ky tu dau va cuoi cua phan 'textview' trong app
+    . dong 9: xau 'btext' luu doan text cua 'textview' nam trong khoang [start, end] tuc la noi dung van ban da duoc nguoi dung chinh sua trong phan textview
+    . dong 10 - 13: cau lenh if - neu tim thay noi dung nguoi dung tim kiem trong cay tu dien thi update noi dung cua noi dung do bang noi dung cua 'btext' tuc noi dung moi da duoc nguoi dung chinh sua va luu vao cay tu dien + Thong bao "Edit thanh cong" ra man hinh
+    . dong 14: an nut Add vi noi dung da ton tai khong can Add
+    . dong 15: dong cay btree 
+
+4. void addBtn_click(GtkWidget *button, Widgets *app)
+    . Tac dung: ham ket noi voi nut Add trong giao dien va thuc hien Add du lieu vao cay tu dien
+    . Giong voi chuc nang Edit chi khac o muc dich: Add dung khi tu can tim chua he xuat hien trong tu dien; Edit dung khi muon cap nhat tu da co san 
+    . dong 1 -> cau lenh if: giong het ham Edit 
+    . cau lenh if: neu khong tim thay noi dung nguoi dung tim kiem trong cay tu dien thi insert vao cay tu dien mot node moi co 'key' la tu nguoi dung vua tim kiem va 'val' la noi dung nguoi dung tu dinh nghia vao trong phan textview cua app + Thong bao "Add thanh cong" ra man hinh
+    . dong 14: an nut Add vi vua moi Add xong Add lam gi nua
+    . dong 15: dong cay btree
+
+5. void delBtn_click(GtkWidget *button, Widgets *app)
+    . Tac dung: ham ket noi voi nut Delete trong giao dien va thuc hien Xoa tu khoi cay tu dien
+    . dong 1: khai bao xau trong Gtk la 'text'
+    . dong 2: khai bao bien value dung trong ham 'bfndky' ben duoi
+    . dong 3: khai bao 'textbuffer' de thao tac voi phan 'textview' cua app
+    . dong 4: luu du lieu vao cay btree 'tree'
+    . dong 5: tro 'textbuffer' toi phan 'textview' cua app
+    . dong 6: xau 'text' se luu noi dung nguoi dung nhap vao phan Tim kiem
+    . dong 7 -> 11: cau lenh if - neu tim thay noi dung nguoi dung tim kiem trong cay tu dien thi xoa node co 'key' la tu nguoi dung vua tim khoi cay tu dien + Thong bao "Xoa thanh cong" ra man hinh
+    . dong 12 -> 14: an di cac nut Add, Edit, Del
+    . dong 15: dong cay btree
+
+III. Phan su dung Soundex
+
+a. Thuat toan soundex tu viet (thuc ra la lay tren mang):
+Link: "https://www.rosettacode.org/wiki/Soundex#C"
+
+1. static char code[128] = { 0 }
+
+2. const char* soundex(const char *s)
+    
+3. void add_code(const char *s, int c)
+
+4. void init()
+
+b. Cac ham de su dung thuat toan soundex trong bai:
+
+5. int check_prefix(char *str1, char *str2)
+    . Tac dung: kiem tra xem xau 'str2' co nam o phan dau tien cua xau 'str1'
+    . Tra ve 0 neu sai
+    . Tra ve 1 neu dung
+    . Ham nay de hieu
+
+6. void findBySoundex(char *word, char *arr)
+    . Tac dung: tim trong cay tu dien nhung tu co cung ma soundex voi tu 'word' vao noi cac tu do thanh mot xau 'arr'
+    . dong 1: luu du lieu vao cay btree 'soundexTree'
+    . dong 2: khai bao 3 xau: 'soundexcode', 'name', 'soundex1'
+    . dong 3: khai bao bien chay 'i', bien 'rsize' dung cho ham 'btseln' ben duoi
+    . dong 4: ma hoa 'word' bang thuat toan soundex va copy vao xau 'soundexcode'
+    . dong 5: viet ham 'btsel' de sau do dung vong while cho ham 'btseln'
+    . Vong lap 'while': duyet cay 'soundexTree' voi gioi han 30 tu can tim co cung ma soundex voi xau 'soundexcode'. Cac tu tim duoc se noi vao xau 'arr' theo dinh dang: 'word1 word2 word3 ...'
+    . Dong cay btree
+
+7. void stringProcess(char *input, char *output1)
+    . Tac dung: tach tu dau tien trong xau dinh dang 'word1 word2 word3 ...' ra va luu vao xau 'output1' - dung cho xau 'arr' ben tren
+    . Code nay de hieu 
+
+8. void addToListSuggests(JRB nextword, int number)
+    . Tac dung: push mot luong 'number' tu goi y vao mot thanh phan 'list' cua app (mot cai list hien cac tu goi y khi go chu vao phan Tim kiem)
+    . Cay JRB nextword luu tru cac tu goi y
+    . Ham nay dung bo tro cho ham 'suggest' ben duoi
+
+9. gboolean checkSoundex(Widgets *wg, GdkEvent *event, gpointer user_data)
+    . Tac dung: ham thao ket noi voi thanh phan 'searchEntry' 
+    
+
+10. void suggest(char *word, GdkEventKey keyEvent)
+    . Tac dung: khi an phim Tab se goi y tu co cung ma soundex voi tu 'word'
+
+11. gboolean updating_suggest(GtkWidget *entry, GdkEvent *event, gpointer user_data)
+    . Tac dung: khi an phim Tab se cap nhat tu goi y moi cung co cung ma soundex voi tu dang o trong o Tim kiem
